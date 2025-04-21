@@ -3,7 +3,7 @@
 use Sikessem\Tracer\Backtrace;
 
 beforeEach(function () {
-    $this->trace = new Backtrace();
+    $this->trace = new Backtrace;
     $this->helperTrace = backtrace();
 });
 

@@ -39,8 +39,11 @@ final class Backtrace
      */
     private array $stack = [];
 
-    public function __construct(int $flags = self::DEFAULT_FLAGS, int $reset = self::DEFAULT_RESET, int $limit = self::DEFAULT_LIMIT)
-    {
+    public function __construct(
+        int $flags = self::DEFAULT_FLAGS,
+        int $reset = self::DEFAULT_RESET,
+        int $limit = self::DEFAULT_LIMIT
+    ) {
         $reset++;
 
         if ($limit !== 0) {
@@ -49,7 +52,16 @@ final class Backtrace
 
         $stack = debug_backtrace($flags, $limit);
         array_splice($stack, 0, $reset);
+        /** @var list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:list<mixed>,object?:object}> $stack */
         $this->stack = $stack;
+    }
+
+    /**
+     * @return list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:list<mixed>,object?:object}>
+     */
+    public function __debugInfo(): array
+    {
+        return $this->stack;
     }
 
     /**
@@ -62,7 +74,9 @@ final class Backtrace
 
     public function getDirectory(int $offset = self::DEFAULT_OFFSET): ?string
     {
-        if ($file = $this->getFile($offset)) {
+        $file = $this->getFile($offset);
+
+        if ($file) {
             return dirname($file);
         }
 
@@ -103,18 +117,10 @@ final class Backtrace
     }
 
     /**
-     * @return array<array-key,mixed>|null
+     * @psalm-return list<mixed>|null
      */
     public function getArgs(int $offset = self::DEFAULT_OFFSET): ?array
     {
         return $this->stack[$offset][self::ARGS_FIELD] ?? null;
-    }
-
-    /**
-     * @return list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:list<mixed>,object?:object}>
-     */
-    public function __debugInfo(): array
-    {
-        return $this->stack;
     }
 }

@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Sikessem\Tracer;
 
-final class Backtrace
+/**
+ * @api
+ */
+class Backtrace
 {
     public const IGNORE_ARGS = DEBUG_BACKTRACE_IGNORE_ARGS;
 
@@ -35,7 +38,7 @@ final class Backtrace
     public const DEFAULT_OFFSET = 0;
 
     /**
-     * @var list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:list<mixed>,object?:object}>
+     * @var list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:mixed[],object?:object}>
      */
     private array $stack = [];
 
@@ -52,12 +55,12 @@ final class Backtrace
 
         $stack = debug_backtrace($flags, $limit);
         array_splice($stack, 0, $reset);
-        /** @var list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:list<mixed>,object?:object}> $stack */
+        /** @phpstan-var list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:mixed[],object?:object}> $stack */
         $this->stack = $stack;
     }
 
     /**
-     * @return list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:list<mixed>,object?:object}>
+     * @return list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:mixed[],object?:object}>
      */
     public function __debugInfo(): array
     {
@@ -65,7 +68,7 @@ final class Backtrace
     }
 
     /**
-     * @return list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:list<mixed>,object?:object}>|array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:list<mixed>,object?:object}
+     * @return list<array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:mixed[],object?:object}>|array{function:string,line?:int,file?:string,class?:class-string,type?:string,args?:mixed[],object?:object}
      */
     public function getStack(?int $offset = null): array
     {
@@ -76,7 +79,7 @@ final class Backtrace
     {
         $file = $this->getFile($offset);
 
-        if ($file) {
+        if (isset($file) && $file !== '') {
             return dirname($file);
         }
 
@@ -117,7 +120,7 @@ final class Backtrace
     }
 
     /**
-     * @psalm-return list<mixed>|null
+     * @psalm-return mixed[]|null
      */
     public function getArgs(int $offset = self::DEFAULT_OFFSET): ?array
     {

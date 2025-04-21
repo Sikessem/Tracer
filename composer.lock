@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "832c7944b8bd1d945d2f18bffe339907",
+    "content-hash": "3e1160102c686e2ccd984927e8c57c6e",
     "packages": [],
     "packages-dev": [
         {
@@ -7113,7 +7113,7 @@
             "time": "2024-10-09T05:16:32+00:00"
         },
         {
-            "name": "sikessem/php-devtools",
+            "name": "sikessem/devtools",
             "version": "v1.3.0",
             "source": {
                 "type": "git",
@@ -7211,7 +7211,6 @@
                 "issues": "https://github.com/Sikessem/PHP-DevTools/issues",
                 "source": "https://github.com/Sikessem/PHP-DevTools"
             },
-            "abandoned": "sikessem/devtools",
             "time": "2025-04-17T09:38:45+00:00"
         },
         {

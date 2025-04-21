@@ -1,6 +1,18 @@
-# 📦️ [<img src="https://github.com/sikessem/art/blob/HEAD/images/logo.svg" alt="Sikessem" height="24" />][sikessem-link] Tracer
+# [<img src="https://github.com/sikessem/art/blob/HEAD/images/logo.svg" alt="Sikessem" height="24" />][sikessem-link] Tracer 🧐
 
-Create a new [Sikessem][sikessem-link] project based on this template.
+Tracer is a modern, minimalistic PHP package for capturing, filtering,
+and navigating execution traces (debug_backtrace) with clarity and precision.
+It provides a clean, fluent, and iterable API that allows you to:
+
+- Dynamically filter files, classes, methods, functions, lines, and more
+- Ignore helper functions or internal frames to focus on relevant code
+- Navigate through the trace stack with methods like peek(), each(), first(), etc.
+- Determine whether a function, method, or class appears in the call stack
+- Create clean, readable backtraces with zero dependencies
+
+Tracer is ideal as a standalone utility or as a foundational component
+for more complex tools like [Exceptor](https://github.com/Sikessem/Exceptor),
+enabling precise and expressive debugging in modern PHP.
 
 [![php-icon]][php-link]
 [![packagist-version-icon]][packagist-version-link]
@@ -47,7 +59,7 @@ Larger discussions and proposals are discussed in [**Sikessem's GitHub discussio
 
 ## 🔐 Security Reports
 
-If you discover a security vulnerability within [any of Sikessem's projects][sikessem-link], please email [SIGUI Kessé Emmanuel](https://sigui.ci) at [contact@sigui.ci](mailto:contact@sigui.ci). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within [any of Sikessem's projects][sikessem-link], please email [SIGUI Kessé Emmanuel](https://siguici.deno.dev) at [siguici@proton.me](mailto:siguici@proton.me). All security vulnerabilities will be promptly addressed.
 
 ## 📄 License
 

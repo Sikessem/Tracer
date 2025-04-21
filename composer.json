@@ -1,20 +1,15 @@
 {
     "name": "sikessem/tracer",
-    "type": "project",
-    "description": "📦️ Sikessem library builder template.",
+    "type": "library",
+    "description": "A minimal and modern PHP library to capture, filter, and iterate over debug_backtrace results with a fluent API.",
+    "keywords": ["php", "debug", "trace", "stacktrace", "debug_backtrace", "backtrace", "call stack", "tracing"],
     "homepage": "https://sikessem.github.io/packages/tracer",
     "license": "MIT",
-    "keywords": [
-        "sikessem",
-        "package-tracer",
-        "repository-template",
-        "php"
-    ],
     "authors": [
         {
-            "name": "SIGUI Kessé Emmanuel",
-            "email": "contact@sigui.ci",
-            "homepage": "https://sigui.ci"
+            "name": "Sigui Kessé Emmanuel",
+            "email": "siguici@proton.me",
+            "homepage": "https://siguici.deno.dev"
         }
     ],
     "support": {
